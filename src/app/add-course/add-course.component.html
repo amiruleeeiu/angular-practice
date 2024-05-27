@@ -1,0 +1,77 @@
+<h1 class="text-2xl font-bold">Add Course</h1>
+
+<form action="" [formGroup]="regForm">
+  <div class="flex flex-col w-[400px]">
+    <label for="description">Title</label>
+    <input
+      type="text"
+      formControlName="description"
+      name="description"
+      class="bg-gray-50 px-2 py-2 my-1 outline-none border border-1 rounded"
+    />
+    <div
+      *ngIf="
+        regForm.get('description')?.touched &&
+        regForm.get('description')?.errors
+      "
+    >
+      <span
+        *ngIf="regForm.get('description')?.errors?.['required']"
+        class="text-red-600"
+      >
+        Title is required.
+      </span>
+      <span
+        *ngIf="regForm.get('description')?.errors?.['minlength']"
+        class="text-red-600"
+      >
+        Title minimum length is 5.
+      </span>
+    </div>
+  </div>
+  <div class="flex flex-col">
+    <label for="iconUrl">Image</label>
+    <input
+      type="text"
+      name="iconUrl"
+      formControlName="iconUrl"
+      class="bg-gray-50 px-2 py-2 my-1 outline-none border border-1 rounded"
+    />
+  </div>
+  <div class="flex flex-col">
+    <label for="category">Category</label>
+    <input
+      type="text"
+      name="category"
+      formControlName="category"
+      class="bg-gray-50 px-2 py-2 my-1 outline-none border border-1 rounded"
+    />
+  </div>
+  <div class="flex flex-col">
+    <label for="lessonsCount">Lessons Count</label>
+    <input
+      type="text"
+      name="lessonsCount"
+      formControlName="lessonsCount"
+      class="bg-gray-50 px-2 py-2 my-1 outline-none border border-1 rounded"
+    />
+  </div>
+  <div class="flex flex-col">
+    <label for="longDescription">Description</label>
+    <textarea
+      type="text"
+      name="longDescription"
+      formControlName="longDescription"
+      class="bg-gray-50 px-2 py-2 my-1 outline-none border border-1 rounded"
+    ></textarea>
+  </div>
+  <div>
+    <button
+      (click)="signUp()"
+      type="submit"
+      class="bg-green-600 w-full py-2 text-white"
+    >
+      Submit
+    </button>
+  </div>
+</form>
