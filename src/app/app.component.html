@@ -1,14 +1,20 @@
-<div class="flex m-12">
-  <div>
-    <course-card
-      (dataEvent)="onDataReceived($event)"
-      *ngFor="let course of courses"
-      [course]="course"
-      trackBy:course.id
-    ></course-card>
-  </div>
+<div class="m-12">
+  <cart></cart>
+  <div class="flex">
+    <div>
+      <course-card
+        (dataEvent)="onDataReceived($event)"
+        *ngFor="let course of courses"
+        [course]="course"
+        trackBy:course.id
+      ></course-card>
+    </div>
 
-  <div>
-    <add-course [courseId]="courseId" (dataEvent)="onDataReceived($event)"></add-course>
+    <div>
+      <add-course
+        [courseId]="courseId"
+        (dataEvent)="onDataReceived($event)"
+      ></add-course>
+    </div>
   </div>
 </div>

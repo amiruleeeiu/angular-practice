@@ -6,9 +6,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AddCourseComponent } from './add-course/add-course.component';
 import { AppComponent } from './app.component';
 import { CourseCardComponent } from './course-card/course-card.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
-  declarations: [AppComponent, CourseCardComponent, AddCourseComponent],
+  declarations: [AppComponent, CourseCardComponent, AddCourseComponent, CartComponent],
   imports: [BrowserModule, HttpClientModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],

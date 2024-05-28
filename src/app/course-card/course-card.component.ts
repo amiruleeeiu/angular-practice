@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { CartCountService } from '../cart-count.service';
 import { Course } from '../model/course';
 
 @Component({
@@ -12,7 +13,10 @@ export class CourseCardComponent {
 
   @Output() dataEvent: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    public cartCountService: CartCountService
+  ) {}
 
   handleEdit(id: number): void {
     this.dataEvent.emit(id);
