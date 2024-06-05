@@ -1,0 +1,55 @@
+<h2 mat-dialog-title>{{ title }} User</h2>
+
+<mat-dialog-content class="mat-typography">
+  <div class="flex items-center justify-center">
+    <mat-progress-spinner
+      diameter="50"
+      mode="indeterminate"
+      *ngIf="isLoadingGetById"
+    ></mat-progress-spinner>
+  </div>
+  <form
+    class="example-form"
+    [formGroup]="userForm"
+    (ngSubmit)="onSubmit()"
+    *ngIf="!isLoadingGetById"
+  >
+    <mat-form-field class="example-full-width">
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Name" formControlName="name" />
+      <mat-error
+        *ngIf="
+          userForm.get('name')?.hasError('required') &&
+          userForm.get('name')?.touched
+        "
+      >
+        Please enter a valid name
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Weight</mat-label>
+      <input matInput placeholder="Weight" formControlName="weight" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Symbol</mat-label>
+      <input matInput placeholder="Symbol" formControlName="symbol" />
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+    (click)="onSubmit()"
+    type="submit"
+    mat-raised-button
+    [disabled]="!userForm.valid || isLoading"
+    color="primary"
+  >
+    <div class="flex gap-1">
+      <span>{{ title == "Add" ? "Save" : "Update" }}</span>
+      <mat-spinner *ngIf="isLoading" diameter="20"></mat-spinner>
+    </div>
+  </button>
+</mat-dialog-actions>

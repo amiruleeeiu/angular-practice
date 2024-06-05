@@ -36,7 +36,7 @@ export class AppComponent implements OnInit, OnChanges {
   }
 
   fetchData(): void {
-    this.dataService.getData().subscribe({
+    this.dataService.getData(``).subscribe({
       next: (res) => (this.courses = res),
       error: (err) => (this.error = err),
     });
